@@ -7,12 +7,12 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   apiUrl = 'http://www.omdbapi.com/';
   apiKey = '?apikey=f79aeba3';
-  apiParam = '&s=';
-  endpointUrl = this.apiUrl + this.apiKey + this.apiParam
+
+  endpointUrl = this.apiUrl + this.apiKey
 
   constructor(private http: HttpClient) { }
 
-  getSearchResults(urlParam) {
+    getApiCall(urlParam) {
     return this.http.get(this.endpointUrl + urlParam);
   }
 }

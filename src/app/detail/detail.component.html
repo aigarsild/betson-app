@@ -1,1 +1,13 @@
 <p>detail works!</p>
+
+<ul class="search-results--list" *ngIf="searchContent">
+    <h2>{{ searchContent.Title }}</h2>
+    <p>{{ searchContent.Year }}</p>
+    <p>{{ searchContent.Type }}</p>
+    <img src="{{ searchContent.Poster }}" alt="{{ searchContent.Title }}">
+    <p>{{ searchContent.Plot }}</p>
+    <p>{{ searchContent.imdbRating }}</p>
+    <p>{{ searchContent.Runtime }}</p>
+    <p>{{ searchContent.Genre }}</p>
+
+</ul>

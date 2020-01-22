@@ -1,12 +1,21 @@
 <h2>Search</h2>
 <div>
-    <input type="text" [(ngModel)]="name" (ngModelChange)="getSearchValue($event)" />
+    <input type="text" #searchInput placeholder="Type any movie name" />
 </div>
 
-<div>
-    <ul *ngIf="searchValue">
+<section class="search-results">
+    <ul class="search-results--list" *ngIf="searchValue">
         <li *ngFor="let search of searchResults">
-            <p>{{ search.Title }}</p>
+            <a href="#" [routerLink]="['/detail', search.Title]">
+                <div *ngIf="search.Poster !== 'N/A'; else placeholderImg">
+                    <img src="{{ search.Poster }}" alt="{{ search.Title }}">
+                </div>
+                <ng-template #placeholderImg><div class="placeholderImg"></div></ng-template>
+
+                <h3>{{ search.Title }}</h3>
+                <p>{{ search.Year }}</p>
+                <p>{{ search.Type }}</p>
+            </a>
         </li>
     </ul>
-</div>
+</section>
