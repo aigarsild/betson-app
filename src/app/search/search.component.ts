@@ -40,7 +40,6 @@ export class SearchComponent implements OnInit {
           // subscription for response
       ).subscribe((text: string) => {
           this.getSearchValue(text);
-          history.pushState(null, null, '?' + text);
       });
 
   }
