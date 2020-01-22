@@ -1,4 +1,12 @@
 <h2>Search</h2>
 <div>
-    <input type="text" [(ngModel)]="name" (ngModelChange)="getSearchValue($event)" >
+    <input type="text" [(ngModel)]="name" (ngModelChange)="getSearchValue($event)" />
+</div>
+
+<div>
+    <ul *ngIf="searchValue">
+        <li *ngFor="let search of searchResults">
+            <p>{{ search.Title }}</p>
+        </li>
+    </ul>
 </div>
