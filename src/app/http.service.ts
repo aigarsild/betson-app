@@ -12,7 +12,12 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-    getApiCall(urlParam) {
+  getApiCall(urlParam) {
     return this.http.get(this.endpointUrl + urlParam);
+  }
+
+  cleanParams(decodeUrl, removeParam) {
+      let queryString = decodeURI(decodeUrl);
+      return queryString.replace(removeParam, '');
   }
 }

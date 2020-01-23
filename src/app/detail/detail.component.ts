@@ -9,8 +9,8 @@ import { HttpService } from '../http.service';
 })
 export class DetailComponent implements OnInit {
   paramName = this.route.snapshot.params.id;
-  apiParam = '&t=';
-  searchContent = Object;
+  apiParam: string = '&t=';
+  searchContent: Object;
 
   constructor(private route: ActivatedRoute, private _http: HttpService) { }
 

@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit } from "@angular/core";
+import { Component, ViewChild, ElementRef, OnInit, HostListener } from "@angular/core";
 import { of } from "rxjs";
 import {
     debounceTime,
@@ -18,33 +18,47 @@ import { HttpService } from '../http.service';
 export class SearchComponent implements OnInit {
   searchValue: string = '';
   searchResults: Object;
-  apiParam = '&s=';
+  searchParam: string = '?search=';
 
-  @ViewChild('searchInput') searchInput: ElementRef;
+  apiParam: string = '&s=';
+
+  @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
+
+    @HostListener('window:popstate', ['$event'])
+    onPopState(event) {
+        this.getSearchUrlParams(event);
+    }
 
   constructor(private _http: HttpService) { }
 
   ngOnInit() {
+        this.searchInputActions();
 
+        if (window.location.search.includes(this.searchParam) ) {
+            this.insertSearchParamsIntoSearch(
+                this._http.cleanParams(window.location.search, this.searchParam)
+            );
+        }
+  }
+
+  searchInputActions() {
       fromEvent(this.searchInput.nativeElement, 'keyup').pipe(
           // get value
           map((event: any) => {
               return event.target.value;
           })
-          // if character length greater then 2
-          ,filter(res => res.length > 2)
           // Time in milliseconds between key events
-          ,debounceTime(250)
+          ,debounceTime(500)
           // If previous query is diffent from current
           ,distinctUntilChanged()
-          // subscription for response
       ).subscribe((text: string) => {
-          this.getSearchValue(text);
+          this.storeSearchValue(text);
+          //On search push search params to URL and into history
+          history.pushState(null, null, '?search=' + text);
       });
-
   }
 
-  getSearchValue(name) {
+  storeSearchValue(name) {
     this.searchValue = this.apiParam + name;
     this.searchResultsCall();
   }
@@ -52,8 +66,19 @@ export class SearchComponent implements OnInit {
   searchResultsCall() {
       this._http.getApiCall(this.searchValue).subscribe(data => {
           this.searchResults = data.Search;
-          console.log(this.searchResults);
       });
+  }
+
+  getSearchUrlParams(event) {
+      let queryString = decodeURI(event.currentTarget.location.search);
+      this.insertSearchParamsIntoSearch(
+          queryString.replace('?search=', '')
+      );
+  }
+
+  insertSearchParamsIntoSearch(queryString) {
+      this.searchInput.nativeElement.value = queryString;
+      this.storeSearchValue(queryString);
   }
 
 }
