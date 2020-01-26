@@ -1,0 +1,53 @@
+
+/* Colors */
+$base-background-color: #E1E1E1;
+$secondary-color: #2F2F2F;
+$box-color: #FFFFFF;
+$box-color-secondary: #7C7A7A;
+$action-color: #FF5D73;
+
+/* Typography */
+$title-size: 18px;
+
+/* Paddings and margins */
+$box-margin: 20px 10px;
+$border-radius: 10px;
+
+/* Containers */
+$x-small: 600px !default;
+$small: 800px !default;
+$medium: 1000px !default;
+$large: 1200px !default;
+
+/* Breakpoints */
+$mobile: $x-small !default;
+$tablet: $small !default;
+$desktop: $medium !default;
+
+
+/* Mixins */
+@mixin title {
+  font-size: $title-size;
+  font-weight: bold;
+}
+
+// Media query for mobile first layout
+@mixin small-breakpoint {
+  @media (min-width: #{$mobile}) {
+    @content;
+  }
+}
+
+// Break on tablet
+@mixin medium-breakpoint {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+// Break on desktop
+@mixin large-breakpoint {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}

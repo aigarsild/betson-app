@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+import { of, from } from 'rxjs'
+@Injectable({ providedIn: 'root' })
+
 export class HttpService {
   apiUrl = 'http://www.omdbapi.com/';
   apiKey = '?apikey=f79aeba3';
 
-  endpointUrl = this.apiUrl + this.apiKey
+  endpointUrl = this.apiUrl + this.apiKey;
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,14 @@ export class HttpService {
   }
 
   cleanParams(decodeUrl, removeParam) {
-      let queryString = decodeURI(decodeUrl);
-      return queryString.replace(removeParam, '');
+    //Clean up params taken from URL
+    let queryString = '';
+    decodeUrl ? queryString = decodeURI(decodeUrl) : '';
+
+    if (!removeParam) {
+      return queryString;
+    }
+
+    return queryString.replace(removeParam, '');
   }
 }

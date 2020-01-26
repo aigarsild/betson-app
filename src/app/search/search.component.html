@@ -1,21 +1,29 @@
-<h2>Search</h2>
-<div>
+<article class="search-header">
+    <h1>Search for the best movies from The Open Movie Database</h1>
+</article>
+
+<section class="search">
+    <div class="search-icon"></div>
     <input type="text" #searchInput placeholder="Type any movie name" />
-</div>
+</section>
 
 <section class="search-results">
-    <ul class="search-results--list" *ngIf="searchValue">
+    <p *ngIf="showsearchValue" class="search-results--show-result" >Search result for: <strong>{{ showsearchValue }}</strong></p>
+
+    <h3 *ngIf="showWarningMsg" class="warning">Cant find anything for {{ showsearchValue }}!</h3>
+
+    <ul class="search-results--list" *ngIf="searchValue && !showWarningMsg">
         <li *ngFor="let search of searchResults">
             <a href="#" [routerLink]="['/detail', search.Title]">
                 <div *ngIf="search.Poster !== 'N/A'; else placeholderImg">
                     <img src="{{ search.Poster }}" alt="{{ search.Title }}">
                 </div>
                 <ng-template #placeholderImg><div class="placeholderImg"></div></ng-template>
-
                 <h3>{{ search.Title }}</h3>
-                <p>{{ search.Year }}</p>
-                <p>{{ search.Type }}</p>
             </a>
+            <section>
+                <span>{{ search.Year }}, {{ search.Type }}</span>
+            </section>
         </li>
     </ul>
 </section>

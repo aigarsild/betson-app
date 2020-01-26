@@ -1,16 +1,84 @@
+@import '../../assets/css/_variables';
+
+.search-header {
+  padding: $box-margin;
+  color: $box-color;
+
+  h1 {
+    @include title;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+.search {
+  padding: $box-margin;
+
+  @include large-breakpoint {
+    padding: 30px 20%;
+  }
+
+  &-icon {
+    margin: 0 0 -34px 10px;
+  }
+
+  input {
+    height: 50px;
+    width: 100%;
+    padding: 0 30px 0 30px;
+    box-sizing : border-box;
+    border-radius: $border-radius;
+    text-align: center;
+    border: none;
+    background: $secondary-color;
+    color: $box-color;
+    @include title;
+    box-shadow: 0 4px 10px #555353;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
 
 
 .search-results {
+  background: $base-background-color;
+
+  .warning {
+    padding: 10px;
+  }
+
+  &--show-result {
+    padding: 10px 0 0 10px;
+  }
+
   &--list {
+    margin: 0;
+    padding: 0;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
     li {
-      width: 15%;
-      background: green;
-      padding: 30px;
+      width: 43%;
+      padding: 10px;
+      margin: 10px auto;
+      background: $box-color;
+      border-radius: $border-radius;
+
+      @include medium-breakpoint {
+        width: 25%;
+      }
+
+      @include large-breakpoint {
+        width: 17%;
+      }
+
       img {
         width: 100%;
+        height: auto;
       }
     }
   }

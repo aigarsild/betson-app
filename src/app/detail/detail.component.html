@@ -1,13 +1,20 @@
-<p>detail works!</p>
+<section class="detail-page">
+    <a href="#" routerLink="/" class="back-btn">Back to search</a>
 
-<ul class="search-results--list" *ngIf="searchContent">
-    <h2>{{ searchContent.Title }}</h2>
-    <p>{{ searchContent.Year }}</p>
-    <p>{{ searchContent.Type }}</p>
-    <img src="{{ searchContent.Poster }}" alt="{{ searchContent.Title }}">
-    <p>{{ searchContent.Plot }}</p>
-    <p>{{ searchContent.imdbRating }}</p>
-    <p>{{ searchContent.Runtime }}</p>
-    <p>{{ searchContent.Genre }}</p>
+    <section class="detail-page--content" *ngIf="searchContent">
+        <aside class="detail-page--img">
+            <img src="{{ searchContent.Poster }}" alt="{{ searchContent.Title }}">
+        </aside>
 
-</ul>
+        <aside>
+            <h2>{{ searchContent.Title }}</h2>
+            <p><strong>{{ searchContent.Type }}</strong>, <strong>{{ searchContent.Year }}</strong></p>
+            <p><strong>Imdb score:</strong> {{ searchContent.imdbRating }}</p>
+            <p><strong>Runtime: </strong>{{ searchContent.Runtime }}</p>
+            <p><strong>Genre: </strong>{{ searchContent.Genre }}</p>
+            <p><strong>Actors: </strong>{{ searchContent.Actors }}</p>
+            <p><strong>Summary: </strong> {{ searchContent.Plot }}</p>
+        </aside>
+    </section>
+    <p *ngIf="errorMsg">{{ errorMsg }}</p>
+</section>

@@ -1,0 +1,98 @@
+@import '../assets/css/base/_normalize';
+@import '../assets/css/_variables';
+
+body {
+  background: $base-background-color;
+  margin: 0;
+}
+
+app-root {
+  width: 100%;
+}
+
+header {
+  background: $box-color-secondary;
+  color: $box-color;
+
+  h2 {
+    @include title;
+    padding: $box-margin;
+    margin: 0;
+  }
+}
+
+main {
+  background: $box-color-secondary;
+}
+
+li {
+  list-style: none;
+}
+
+/* unvisited link */
+a:link {
+  color: $secondary-color;
+}
+
+/* visited link */
+a:visited {
+  color: $secondary-color;
+}
+
+/* mouse over link */
+a:hover {
+  color: $action-color;
+}
+
+/* selected link */
+a:active {
+  color: $action-color;
+}
+
+details {
+  cursor: pointer;
+}
+
+/* Icons */
+.search-icon {
+  width: 19px;
+  height: 19px;
+  border: solid 2px $box-color;
+  border-radius: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 7px;
+    background: $box-color;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 17px;
+    right: -2px;
+  }
+}
+
+.warning {
+  color: $action-color;
+}
+
+.placeholderImg {
+  width: 100%;
+  min-height: 250px;
+  height: 50%;
+  background: $action-color;
+
+  @include medium-breakpoint {
+    min-height: 300px;
+  }
+
+  @include large-breakpoint {
+    min-height: 350px;
+  }
+}
+
+footer {
+  padding: $box-margin;
+}

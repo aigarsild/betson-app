@@ -1,0 +1,56 @@
+@import '../../assets/css/_variables';
+
+.detail-page {
+  background: $base-background-color;
+  padding: $box-margin;
+
+  .back-btn {
+    margin: 10px 0;
+  }
+
+  &--img {
+    background: $box-color;
+    margin: 0;
+    display: flex;
+    border-radius: 10px;
+
+    @include medium-breakpoint {
+      margin: 0 20px;
+    }
+
+    @include large-breakpoint {
+      margin: 0 20px;
+    }
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  &--content {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    @include medium-breakpoint {
+      width: 100%;
+      flex-direction: row;
+    }
+
+    @include large-breakpoint {
+      width: 70%;
+      flex-direction: row;
+    }
+
+    aside {
+      width: 100%;
+
+      @include medium-breakpoint {
+        width: 50%;
+      }
+
+      @include large-breakpoint {
+        width: 50%;
+      }
+    }
+  }
+}
