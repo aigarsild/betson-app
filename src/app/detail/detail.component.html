@@ -2,7 +2,7 @@
     <a href="#" routerLink="/" class="back-btn">Back to search</a>
 
     <section class="detail-page--content" *ngIf="searchContent">
-        <aside class="detail-page--img">
+        <aside *ngIf="searchContent.Poster !== 'N/A'" class="detail-page--img">
             <img src="{{ searchContent.Poster }}" alt="{{ searchContent.Title }}">
         </aside>
 
