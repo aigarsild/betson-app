@@ -33,7 +33,7 @@
     background: $secondary-color;
     color: $box-color;
     @include title;
-    box-shadow: 0 4px 10px #555353;
+    box-shadow: $box-shadow;
 
     &:focus {
       outline: none;

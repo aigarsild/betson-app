@@ -22,6 +22,11 @@ Development is done in component based development way. Angular is component bas
 In this project I developed 2 components for search page and detail page. Also generated services component for http calls.
 I used Rxjs for obseervables, also used SCSS for styles and for creating mixins and variables. 
 
+##Future fixes
+
+This is a prototype so there are some things missing because of time limitations or because it didnt make sense to implement right now, things that can be added in the future.
+Some of the things are: There could be and indication for when the content is loading, there could be history with latest searches saved into the browser cache.
+
 # How to install
 
 Clone or download the repository. Navigate to the folder locally and run `npm i` to install the node modules.
