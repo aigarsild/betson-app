@@ -74,13 +74,13 @@ export class SearchComponent implements OnInit {
       }
 
       this._http.getApiCall(this.searchValue).subscribe(data => {
-          if (data.Error) {
-              this.showWarningMsg = data.Error;
+          if (data['error']) {
+              this.showWarningMsg = data['error'];
               return;
           }
 
           this.showWarningMsg = '';
-          this.searchResults = data.Search;
+          this.searchResults = data['search'];
       });
   }
 

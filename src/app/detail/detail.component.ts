@@ -34,8 +34,8 @@ export class DetailComponent implements OnInit {
       }
 
       this._http.getApiCall(apiUrl).subscribe(data => {
-          if (data.Error) {
-              this.errorMsg = data.Error;
+          if (data['error']) {
+              this.errorMsg = data['error'];
               return;
           }
           this.errorMsg = '';
