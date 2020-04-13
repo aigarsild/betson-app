@@ -2,6 +2,8 @@
 
 Angular application search page that uses [The Open Movie Database](http://www.omdbapi.com/) api.
 
+[You can see the demo here](http://sad-benz-ff86d6.netlify.com/)
+
 # About the project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
