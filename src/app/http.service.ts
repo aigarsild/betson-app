@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 
 export class HttpService {
-  apiUrl = 'http://www.omdbapi.com/';
+  apiUrl = 'https://www.omdbapi.com/';
   apiKey = '?apikey=f79aeba3';
 
   endpointUrl = this.apiUrl + this.apiKey;
